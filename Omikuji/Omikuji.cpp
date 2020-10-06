@@ -3,21 +3,11 @@
 #include <stdio.h>
 #include <time.h>
 
-int main()
+// リファクタリング例：処理を関数化する
+void PrintResult(int value)
 {
-	int inputValue = 0;
-	int randValue = 0;
-
-	printf("今日の運勢を占います\n");
-	printf("\n");
-	printf("何か数字を入力してください > ");
-	scanf_s("%d", &inputValue);
-
-	srand((unsigned)time(NULL));
-	randValue = rand() % 6;
-
 	// おみくじの結果を表示する
-	switch( randValue )
+	switch (value)
 	{
 	case 0:
 		printf("今日の運勢：大吉！\n");
@@ -37,10 +27,26 @@ int main()
 	case 5:
 		printf("今日の運勢：大凶！\n");
 		break;
-	default:	
+	default:
 		printf("とてつもない運勢です\n");
 		break;
 	}
+}
+
+int main()
+{
+	int inputValue = 0;
+	int randValue = 0;
+
+	printf("今日の運勢を占います\n");
+	printf("\n");
+	printf("何か数字を入力してください > ");
+	scanf_s("%d", &inputValue);
+
+	srand((unsigned)time(NULL));
+	randValue = rand() % 6;
+
+	PrintResult(randValue);
 
 	system("pause");
 	return 0;
